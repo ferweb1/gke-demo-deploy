@@ -4,14 +4,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: nginx-service
   namespace: default
   labels:
     name: mypod
 spec:
   type: LoadBalancer
   selector:
-    app: hello
+    app: nginx
   ports:
   - port: 80
     targetPort: 8080

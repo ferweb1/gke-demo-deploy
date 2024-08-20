@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld-gke
+  name: nginx-deployment
   namespace: default
   labels:
-    name: mypod
+    name: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello
+      app: nginx
   template:
     metadata:
       labels:
-        app: hello
+        app: nginx
     spec:
       containers:
-      - name: hello-app
+      - name: nginx
         # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
         # Replace $GCLOUD_PROJECT with your project ID.
         image: us-central1-docker.pkg.dev/named-storm-432613-t4/myrespository/nginx:v1
         # This app listens on port 8080 for web traffic by default.
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
           - name: PORT
             value: "8080"
