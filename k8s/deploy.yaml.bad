@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxdeployment
+  labels:
+    type: backend
+    app: nginxapp
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        type: backend
+        app: nginexapp
+    template:
+      metadata:
+        name: nginexapppod
+        labels: 
+          type: backend
+          app: nginexapp
+      spec:
+        containers:
+          - name: nginexappcontainer
+            image: us-central1-docker.pkg.dev/named-storm-432613-t4/myrespository/nginx:v1
+            ports:
+              - containerPort: 80
